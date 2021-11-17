@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<!-- Main Menu -->
+    <menuitem
+        id="courses_main_menu"
+        name="Courses" 
+        web_icon="courses,static/description/icon.png"/>
+
+<!-- =============================================================================== -->
+
+<!--  Courses Sub Menu -->
+    <menuitem
+        id="display_courses_menu"
+        name="[Courses]"
+        parent="courses_main_menu"
+        sequence="1"/>
+
+<!-- +++++++++++++++++++++++++++++++++++++++++++++++ -->
+<!-- Add Display Courses -->
+    <menuitem
+        id="craete_in_display_course_menu"
+        name="Add ---> [Course]"
+        action="display_courses_action"
+        parent="display_courses_menu"
+        sequence="1"/>
+
+
+
+<!-- =============================================================================== -->
+
+<!-- Configuration Sub Menu -->
+    <menuitem
+        id="configuration_menu"
+        name="Configuration"
+        parent="courses_main_menu"
+        sequence="2"/>
+
+
+<!-- =============================================================================== -->
+
+
+
+
+<!-- Add Course Menu -->
+    <menuitem
+        id="create_course_menu"
+        name="Add Course"
+        action="course_course_info_action"
+        parent="configuration_menu"
+        sequence="1"/>
+
+
+<!-- Add Room Menu  -->
+    <menuitem
+        id="create_room_menu"
+        name="Add Room"
+        action="course_room_info_action"
+        parent="configuration_menu"
+        sequence="2"/>
+    
+<!-- Add Lesson Menu -->
+    <menuitem
+        id="create_lesson_menu"
+        name="Add Lesson"
+        action="course_lesson_info_action"
+        parent="configuration_menu"
+        sequence="3"/>
+        
+</odoo>

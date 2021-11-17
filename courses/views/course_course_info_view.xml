@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Form View -->
+    <record id="course_course_info_form_view" model="ir.ui.view">
+        <field name="name">course.info.form.view</field>
+        <field name="model">course.course.info</field>
+        <field name="arch" type="xml">
+            <form string="Create Record">
+                <sheet>
+                    <group id="parent">
+                        <group id="left">
+                            <field name="name" />
+                            <field name="code" placeholder="EX: CS240"/>
+                        </group>
+                        <group id="right">
+                            <field name="number_of_hours" widget="float_time"/>
+                            <field name="content_as_pdf" />
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="note" string="Notes">
+                            <field name="note" />
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"  widget="mail.followers"/>
+                    <field name="message_ids" widget="mail_thread" />
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree View -->
+    <record id="course_course_info_tree_view" model="ir.ui.view">
+        <field name="name">course.info.tree.view</field>
+        <field name="model">course.course.info</field>
+        <field name="arch" type="xml">
+            <tree string="Display List">
+                <field name="name" />
+                <field name="code" />
+                <field name="number_of_hours" />
+            </tree>
+        </field>
+    </record>
+
+
+    <!-- Action -->
+    <record id="course_course_info_action" model="ir.actions.act_window">
+        <field name="name">Courses</field>
+        <field name="res_model">course.course.info</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Create the first course</p>
+        </field>
+    </record>
+
+</odoo>

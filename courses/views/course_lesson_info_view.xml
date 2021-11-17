@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Form View -->
+    <record id="course_lesson_info_form_view" model="ir.ui.view">
+        <field name="name">lesson.info.form.view</field>
+        <field name="model">course.lesson.info</field>
+        <field name="arch" type="xml">
+            <form string="Create Record">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" />
+                            <field name="note" />
+                        </group>
+                        <group>
+                            <field name="room_id" />
+                            <field name="course_id" />
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"  widget="mail.followers"/>
+                    <field name="message_ids" widget="mail_thread" />
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree View -->
+    <record id="course_lesson_info_tree_view" model="ir.ui.view">
+        <field name="name">lesson.info.tree.view</field>
+        <field name="model">course.lesson.info</field>
+        <field name="arch" type="xml">
+            <tree string="Display">
+                <field name="name" />
+                <field name="room_id" />
+                <field name="course_id" />
+            </tree>
+        </field>
+    </record>
+
+
+    <!-- Action -->
+    <record id="course_lesson_info_action" model="ir.actions.act_window">
+        <field name="name">Lessons</field>
+        <field name="res_model">course.lesson.info</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Create the first lesson</p>
+        </field>
+    </record>
+
+</odoo>
