@@ -12,7 +12,7 @@
 <!--  Courses Sub Menu -->
     <menuitem
         id="display_courses_menu"
-        name="[Courses]"
+        name="Main [Courses]"
         parent="courses_main_menu"
         sequence="1"/>
 
@@ -20,7 +20,7 @@
 <!-- Add Display Courses -->
     <menuitem
         id="craete_in_display_course_menu"
-        name="Add ---> [Course]"
+        name="Add ==> [Course]"
         action="display_courses_action"
         parent="display_courses_menu"
         sequence="1"/>

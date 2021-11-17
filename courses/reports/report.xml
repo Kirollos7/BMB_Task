@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <report
+        id="action_report_display_courses"
+        model="display.courses"
+        string="Print Report"
+        report_type="qweb-pdf"
+        name="courses.print_course_report"
+        file="courses.print_course_report"
+    />
+
+    <template id="print_course_report">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <table class="table table-sm table-bordered">
+                            <tbody>
+                                <tr>
+                                    <td style=" text-align: left;  vertical-align: middle;"> <b>Course: </b></td>
+                                    <td style=" text-align: left;  vertical-align: middle;"> <span t-esc="doc.course_id.name"/> </td>
+                                </tr>
+                                <tr>
+                                    <td style=" text-align: left;  vertical-align: middle;"> <b>Instructor: </b></td>
+                                    <td style=" text-align: left;  vertical-align: middle;"> <span t-esc="doc.instructor_id.name"/> </td>
+                                </tr>
+                                <tr>
+                                    <td style=" text-align: left;  vertical-align: middle;"> <b>Room Name: </b></td>
+                                    <td style=" text-align: left;  vertical-align: middle;"> <span t-esc="doc.room.room_name"/> </td>
+                                </tr> 
+                            </tbody>
+                        </table>
+
+                        <br></br>
+                        <br></br>
+
+                        <h3>Students</h3>
+                        <table class="table table-sm table-bordered">
+                            <thead>
+                                <tr>
+                                    <th style=" text-align: center;  vertical-align: middle;">Name</th>
+                                </tr>
+                            </thead>
+                            <tbody> 
+                                <t t-set="get_number_of_student" t-value="0"/>
+                                <tr t-foreach="doc.list_of_attendees" t-as="line">
+                                    <td style=" text-align: center;  vertical-align: middle;"><span t-field="line.name"/></td>
+                                    <t t-set="get_number_of_student" t-value="get_number_of_student+1"/>
+                                </tr>
+                                <tr>
+                                    <td style=" text-align: right;  vertical-align: right;">count of students &#160;&#160;&#160;   <span t-esc="get_number_of_student" /> </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                       
+
+                        <br></br>
+                        <br></br>
+
+                        <h3>Lessons</h3>
+                        <table class="table table-sm table-bordered">
+                            <thead>
+                                <tr>
+                                    <th style=" text-align: center;  vertical-align: middle;">Name</th>
+                                    <th style=" text-align: center;  vertical-align: middle;">Note</th>
+                                </tr>
+                            </thead>
+                            <tbody>            
+                                <tr t-foreach="doc.lessons" t-as="line">
+                                    <td style=" text-align: center;  vertical-align: middle;"><span t-field="line.name"/></td>
+                                    <td style=" text-align: center;  vertical-align: middle;"><span t-field="line.note"/></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+</odoo>

@@ -21,6 +21,6 @@ class LessonInfo(models.Model):
     def name_get(self):
         result = []
         for record in self:
-            rec_name = f'{record.name} (Course Code: {record.course_id.code})' 
+            rec_name = f'{record.name} (Room Number: {record.room_id.room_number})' 
             result.append((record.id,rec_name))
         return result

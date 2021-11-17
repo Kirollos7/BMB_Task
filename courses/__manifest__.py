@@ -10,7 +10,7 @@
         Long description of module's purpose
     """,
 
-    'author': "My Company",
+    'author': "Kirollos Noshy",
     'website': "http://www.yourcompany.com",
 
     # Categories can be used to filter modules in modules listing
@@ -20,7 +20,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'mail', 'contacts'],
+    'depends': ['base', 'mail', 'contacts', 'website'],
     'application': True,
     # always loaded
     'data': [
@@ -31,8 +31,8 @@
         'views/courses_person_view.xml',
         'views/courses_display_view.xml',
         'views/menu_items.xml',
-        
         'views/templates.xml',
+        'reports/report.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

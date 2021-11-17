@@ -1,21 +1,25 @@
-# -*- coding: utf-8 -*-
-# from odoo import http
+from odoo import http
+from odoo.http import request
+import json
+from odoo.addons.website_sale.controllers.main import WebsiteSale
 
 
-# class Courses(http.Controller):
-#     @http.route('/courses/courses/', auth='public')
-#     def index(self, **kw):
-#         return "Hello, world"
-
-#     @http.route('/courses/courses/objects/', auth='public')
-#     def list(self, **kw):
-#         return http.request.render('courses.listing', {
-#             'root': '/courses/courses',
-#             'objects': http.request.env['courses.courses'].search([]),
-#         })
-
-#     @http.route('/courses/courses/objects/<model("courses.courses"):obj>/', auth='public')
-#     def object(self, obj, **kw):
-#         return http.request.render('courses.object', {
-#             'object': obj
-#         })
+class Courses(http.Controller):
+    @http.route('/courses/', type="http", auth='public')
+    def get_courses(self, **kw):
+        courses_object = request.env['display.courses'].search([])
+        courses = []
+        for rec in courses_object:
+            vals = {
+                'Course name': rec.course_id.name,
+                'Instructor name': rec.instructor_id.name,
+                'Room name': rec.room.room_name,
+            }
+            courses.append(vals)
+        data = {
+            'status': "200",
+            'message': "success",
+            'courses': courses,
+        }
+        return json.dumps(data, indent=4,)
+    

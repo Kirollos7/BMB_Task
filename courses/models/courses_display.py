@@ -14,7 +14,7 @@ class CoursesDisplay(models.Model):
    room = fields.Many2one('course.room.info', string='Room',)
    
    list_of_attendees = fields.Many2many('res.partner', string='Students',) 
-   lessons = fields.One2many('course.lesson.info','related_field',string='Lessons', store=True ,readonly=True )
+   lessons = fields.One2many('course.lesson.info','related_field',string='Lessons',)
  
    @api.constrains('list_of_attendees')
    def validate_name_of_student(self):
