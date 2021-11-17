@@ -39,8 +39,7 @@ class CoursesDisplay(models.Model):
    @api.onchange('room')
    def onchange_room(self): 
       room_name = self.room.room_name
-      course_name = self.course_id.name
-      obj = self.env['course.lesson.info'].search(['&',('room_id.room_name','=', room_name),('course_id.name', '=', course_name)])
+      obj = self.env['course.lesson.info'].search([('room_id.room_name','=', room_name)])
       self.lessons = obj
       
       

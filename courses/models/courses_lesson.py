@@ -13,7 +13,6 @@ class LessonInfo(models.Model):
     
     name = fields.Char()
     note = fields.Char()
-    course_id = fields.Many2one('course.course.info',string="Course Name")
     room_id = fields.Many2one('course.room.info',string="Room Number")
     
     related_field = fields.Many2one('display.courses')
