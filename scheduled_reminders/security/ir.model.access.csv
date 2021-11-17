@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_reminder_info,reminder.info,model_reminder_info,base.group_user,1,1,1,1
+access_email_email,email.email,model_email_email,base.group_user,1,1,1,1
+access_to_do_list,to.do.list,model_to_do_list,base.group_user,1,1,1,1
+
+
+
+

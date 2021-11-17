@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<!-- todo list form view -->
+
+  <record id="to_do_list_view_form" model="ir.ui.view">
+    <field name="name">to.do.list.view.form</field>
+    <field name="model">to.do.list</field>
+    <field name="arch" type="xml">
+      <form>
+        <sheet>
+          <group>
+            <field name="name" />
+            <field name="note" />
+            <field name="related_field"  invisible="1"/>
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+
+
+
+  <!-- ================================================================================ -->
+  <record id="reminder_info_view_form" model="ir.ui.view">
+    <field name="name">reminder.info.view.form</field>
+    <field name="model">reminder.info</field>
+    <field name="arch" type="xml">
+      <form>
+        <sheet>
+          <group>
+            <field name="description" />
+            <field name="time" />
+            <field name="recipients" widget="many2many_tags"/>
+          </group>
+          <notebook>
+            <page name="to do list" string="To-Do List">
+              <field name="list_of_scheduled_reminds"  widget="many2many"/>
+            </page>
+          </notebook>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+
+  <record id="reminder_info_view_tree" model="ir.ui.view">
+    <field name="name">reminder.info.view.tree</field>
+    <field name="model">reminder.info</field>
+    <field name="arch" type="xml">
+      <tree>
+        <field name="description" />
+        <field name="time" />
+        <field name="recipients" widget="many2many_tags"/>
+      </tree>
+    </field>
+  </record>
+
+  <record id="reminder_info_action" model="ir.actions.act_window">
+    <field name="name">Scheduled Reminders</field>
+    <field name="res_model">reminder.info</field>
+    <field name="view_mode">tree,form</field>
+    <field name="domain">[]</field>
+    <field name="context">{}</field>
+    <field name="help" type="html">
+      <p class="o_view_nocontent_smiling_face">Create the first reminder</p>
+    </field>
+  </record>
+
+  <menuitem
+    id="reminder_info_menu"
+    name="Scheduled Reminders"
+    sequence="10"/>
+
+  <menuitem
+    id="reminder_info_sub_menu"
+    name="Scheduled Reminders"
+    action="reminder_info_action"
+    parent="reminder_info_menu"
+    sequence="1"/>
+
+</odoo>
